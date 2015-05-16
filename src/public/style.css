@@ -1,5 +1,6 @@
 body {
-    background-color: #ddd
+    background-color: #ddd;
+    margin: 0;
 }
 
 .maze .wall {

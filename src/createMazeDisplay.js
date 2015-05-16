@@ -1,7 +1,5 @@
 'use strict'
 
-import * as maze from './maze'
-
 let createBlock = (x, y, w, h, cssClass) => {
     let el = document.createElement('div')
     
@@ -17,7 +15,7 @@ let createBlock = (x, y, w, h, cssClass) => {
     return el
 }
 
-let createMazeElement = (mz) => {
+export default (mz) => {
     let el = document.createElement('div')
     el.setAttribute('class', 'maze')
 
@@ -86,13 +84,13 @@ let createMazeElement = (mz) => {
         }
     }
 
-    return el
+    return {
+        element: el,
+        getPos(i, j) {
+            return {
+                x: xStart + sizeMultiplier * (edgeRatio + 0.5 + j * (1 + edgeRatio)),
+                y: yStart + sizeMultiplier * (edgeRatio + 0.5 + i * (1 + edgeRatio)),
+            }
+        }
+    }
 }
-
-window.addEventListener('load', () => {
-    console.log('loaded')
-
-    document.body.appendChild(
-        createMazeElement(maze.generate({rows: 11, cols: 15}))
-    )
-})
