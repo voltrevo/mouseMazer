@@ -1,0 +1,29 @@
+{
+  "name": "mouse-mazer",
+  "version": "0.0.1",
+  "description": "A mouse trying to escape from a maze.",
+  "main": "maze.js",
+  "dependencies": {
+    "lodash": "^3.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voltrevo/mouseMazer.git"
+  },
+  "keywords": [
+    "mouse",
+    "maze",
+    "ai"
+  ],
+  "author": "Andrew Morris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voltrevo/mouseMazer/issues"
+  },
+  "homepage": "https://github.com/voltrevo/mouseMazer#readme"
+}
