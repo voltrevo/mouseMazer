@@ -1,6 +1,6 @@
 "use strict"
 
-import * as _ from 'lodash'
+let _ = require('lodash')
 
 let maze = {}
 export default maze
@@ -122,9 +122,7 @@ maze.depthFirstPrune = (seedCell, rand, doStuff = () => {}) => {
             }
         }
 
-        maze.shuffle(edges, rand)
-
-        edges.forEach(edge => {
+        _.shuffle(edges).forEach(edge => {
             visit(edge.get(), () => edge.setEnabled(true))
         })
     }
