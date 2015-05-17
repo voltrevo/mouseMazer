@@ -41,7 +41,7 @@ let startNewGame = (edges, pos, onUpdate) => {
 }
 
 window.addEventListener('load', () => {
-    let sock = sockception.connect('ws://localhost:56657')
+    let sock = sockception.connect('ws://' + window.location.hostname + ':56657')
 
     sock.route('connected').receiveOne(() => {
         let updateHandler = () => {}
