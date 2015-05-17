@@ -93,6 +93,7 @@ export default function(x, y) {
 
             if (self.animation) {
                 window.cancelAnimationFrame(self.animation.requestId)
+                self.animation.resolve()
             }
 
             self.animation = {

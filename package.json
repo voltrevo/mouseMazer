@@ -8,7 +8,8 @@
     "babelify": "^6.1.1",
     "browserify-middleware": "^5.0.2",
     "express": "^4.12.3",
-    "lodash": "^3.8.0"
+    "lodash": "^3.8.0",
+    "sockception": "git://github.com/voltrevo/sockception#02f5c6a75870e44fbfce3d27c1c83cb78bb8634f"
   },
   "devDependencies": {},
   "scripts": {
