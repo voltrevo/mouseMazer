@@ -5,36 +5,6 @@ import createMazeDisplay from './createMazeDisplay'
 import mouse from './mouse'
 import mazeSolver from './mazeSolver'
 
-let keys = {
-    'up': false,
-    'down': false,
-    'left': false,
-    'right': false
-}
-
-const keyMap = {
-    '38': 'up',
-    '40': 'down',
-    '37': 'left',
-    '39': 'right'
-}
-
-window.addEventListener('keydown', (event) => {
-    let keyName = keyMap[event.keyCode]
-
-    if (keyName) {
-        keys[keyName] = true
-    }
-})
-
-window.addEventListener('keyup', (event) => {
-    let keyName = keyMap[event.keyCode]
-
-    if (keyName) {
-        keys[keyName] = false
-    }
-})
-
 window.addEventListener('load', () => {
     let mz = maze.generate({rows: 11, cols: 15})
     let mazeDisplay = createMazeDisplay(mz)
@@ -73,23 +43,4 @@ window.addEventListener('load', () => {
     }
 
     stepLoop()
-
-    /*window.addEventListener('keydown', function tryManualMove() {
-        if (window.mouse.animation) {
-            return
-        }
-
-        for (let keyName of ['up', 'down', 'left', 'right']) {
-            if (
-                keys[keyName] &&
-                mouseCell.edges[keyName] &&
-                mouseCell.edges[keyName].getEnabled()
-            ) {
-                mouseCell = mouseCell.edges[keyName].get()
-                mouseCellPos = mazeDisplay.getPos(mouseCell.data.row, mouseCell.data.col)
-                window.mouse.move(mouseCellPos.x, mouseCellPos.y, 500).then(tryManualMove)
-                break
-            }
-        }
-    })*/
 })
