@@ -14,7 +14,7 @@ export default function(x, y) {
     self.element.style.overflow = 'hidden'
 
     self.imgElement = document.createElement('img')
-    self.imgElement.src = '/assets/mouse.png'
+    self.imgElement.src = 'assets/mouse.png'
     self.imgElement.style.position = 'absolute'
     self.imgElement.style.left = '0px'
     self.imgElement.style.top = '0px'

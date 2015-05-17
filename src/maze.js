@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 let _ = require('lodash')
 
@@ -23,7 +23,7 @@ maze.checkEdgesAndGetSize = (edges) => {
         _.all([edges.vertical, edges.horizontal],
             e => _.all(e,
                 row => _.all(row,
-                    edgeUnit => typeof edgeUnit === "boolean"
+                    edgeUnit => typeof edgeUnit === 'boolean'
                 )
             )
         )
@@ -52,7 +52,7 @@ maze.grid = (edges) => {
 
     api.getCell = ({row, col}) => {
         if (!api.checkPos({row, col})) {
-            throw new Error("Invalid pos")
+            throw new Error('Invalid pos')
         }
 
         const createEdge = (pos) => {
