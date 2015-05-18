@@ -19,27 +19,27 @@ export default (mz) => {
     let el = document.createElement('div')
     el.setAttribute('class', 'maze')
 
-    let edgeRatio = 0.1
+    let edgeUnits = 0.1
 
-    let mzDisplayWidthUnits = mz.size.cols + edgeRatio * (mz.size.cols + 1)
-    let mzDisplayHeightUnits = mz.size.rows + edgeRatio * (mz.size.rows + 1)
+    let mzDisplayWidthUnits = mz.size.cols + edgeUnits * (mz.size.cols + 1)
+    let mzDisplayHeightUnits = mz.size.rows + edgeUnits * (mz.size.rows + 1)
 
-    let sizeMultiplier = 0.9 * Math.min(
+    let unitSize = 0.9 * Math.min(
         window.innerWidth / mzDisplayWidthUnits,
         window.innerHeight / mzDisplayHeightUnits
     )
 
-    let xStart = 0.5 * (window.innerWidth - sizeMultiplier * mzDisplayWidthUnits)
-    let yStart = 0.5 * (window.innerHeight - sizeMultiplier * mzDisplayHeightUnits)
+    let xStart = 0.5 * (window.innerWidth - unitSize * mzDisplayWidthUnits)
+    let yStart = 0.5 * (window.innerHeight - unitSize * mzDisplayHeightUnits)
 
     // corners
     for (let i = 0; i <= mz.size.rows; ++i) {
         for (let j = 0; j <= mz.size.cols; ++j) {
             el.appendChild(createBlock(
-                xStart + j * sizeMultiplier * (1 + edgeRatio),
-                yStart + i * sizeMultiplier * (1 + edgeRatio),
-                sizeMultiplier * edgeRatio,
-                sizeMultiplier * edgeRatio,
+                xStart + j * unitSize * (1 + edgeUnits),
+                yStart + i * unitSize * (1 + edgeUnits),
+                unitSize * edgeUnits,
+                unitSize * edgeUnits,
                 'corner'
             ))
         }
@@ -49,10 +49,10 @@ export default (mz) => {
     for (let i = 0; i <= mz.size.rows; ++i) {
         for (let j = 0; j < mz.size.cols; ++j) {
             el.appendChild(createBlock(
-                xStart + sizeMultiplier * (edgeRatio + j * (1 + edgeRatio)),
-                yStart + sizeMultiplier * i * (1 + edgeRatio),
-                sizeMultiplier * 1,
-                sizeMultiplier * edgeRatio,
+                xStart + unitSize * (edgeUnits + j * (1 + edgeUnits)),
+                yStart + unitSize * i * (1 + edgeUnits),
+                unitSize * 1,
+                unitSize * edgeUnits,
                 'wall' + (mz.edges.horizontal[i][j] ? '' : ' enabled')
             ))
         }
@@ -62,10 +62,10 @@ export default (mz) => {
     for (let i = 0; i < mz.size.rows; ++i) {
         for (let j = 0; j <= mz.size.cols; ++j) {
             el.appendChild(createBlock(
-                xStart + sizeMultiplier * j * (1 + edgeRatio),
-                yStart + sizeMultiplier * (edgeRatio + i * (1 + edgeRatio)),
-                sizeMultiplier * edgeRatio,
-                sizeMultiplier * 1,
+                xStart + unitSize * j * (1 + edgeUnits),
+                yStart + unitSize * (edgeUnits + i * (1 + edgeUnits)),
+                unitSize * edgeUnits,
+                unitSize * 1,
                 'wall' + (mz.edges.vertical[i][j] ? '' : ' enabled')
             ))
         }
@@ -75,10 +75,10 @@ export default (mz) => {
     for (let i = 0; i < mz.size.rows; ++i) {
         for (let j = 0; j < mz.size.cols; ++j) {
             el.appendChild(createBlock(
-                xStart + sizeMultiplier * (edgeRatio + j * (1 + edgeRatio)),
-                yStart + sizeMultiplier * (edgeRatio + i * (1 + edgeRatio)),
-                sizeMultiplier * 1,
-                sizeMultiplier * 1,
+                xStart + unitSize * (edgeUnits + j * (1 + edgeUnits)),
+                yStart + unitSize * (edgeUnits + i * (1 + edgeUnits)),
+                unitSize * 1,
+                unitSize * 1,
                 'cell'
             ))
         }
@@ -88,8 +88,8 @@ export default (mz) => {
         element: el,
         getPos(i, j) {
             return {
-                x: xStart + sizeMultiplier * (edgeRatio + 0.5 + j * (1 + edgeRatio)),
-                y: yStart + sizeMultiplier * (edgeRatio + 0.5 + i * (1 + edgeRatio)),
+                x: xStart + unitSize * (edgeUnits + 0.5 + j * (1 + edgeUnits)),
+                y: yStart + unitSize * (edgeUnits + 0.5 + i * (1 + edgeUnits)),
             }
         }
     }

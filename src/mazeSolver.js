@@ -1,6 +1,6 @@
 'use strict'
 
-let _ = require('lodash')
+let shuffle = require('lodash/collection/shuffle')
 
 export default function(mz, start, end) {
     let self = this
@@ -41,7 +41,7 @@ export default function(mz, start, end) {
             return
         }
 
-        edges = _.shuffle(edges)
+        edges = shuffle(edges)
 
         edges.sort((edgeA, edgeB) => {
             return self.getMetaData(edgeA.get()).visits - self.getMetaData(edgeB.get()).visits

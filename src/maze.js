@@ -1,6 +1,7 @@
 'use strict'
 
-let _ = require('lodash')
+let shuffle = require('lodash/collection/shuffle')
+let all = require('lodash/collection/all')
 
 let maze = {}
 export default maze
@@ -18,11 +19,11 @@ maze.checkEdgesAndGetSize = (edges) => {
     const cols = edges.horizontal[0].length
 
     if (
-        _.all(edges.vertical, row => Array.isArray(row) && row.length === cols + 1) &&
-        _.all(edges.horizontal, row => Array.isArray(row) && row.length === cols) &&
-        _.all([edges.vertical, edges.horizontal],
-            e => _.all(e,
-                row => _.all(row,
+        all(edges.vertical, row => Array.isArray(row) && row.length === cols + 1) &&
+        all(edges.horizontal, row => Array.isArray(row) && row.length === cols) &&
+        all([edges.vertical, edges.horizontal],
+            e => all(e,
+                row => all(row,
                     edgeUnit => typeof edgeUnit === 'boolean'
                 )
             )
@@ -102,7 +103,7 @@ maze.shuffle = (arr, rand) => {
     }
 }
 
-maze.depthFirstPrune = (seedCell, rand, doStuff = () => {}) => {
+maze.depthFirstPrune = (seedCell, rand, doStuff = () => {}) => { // TODO: rand unused
     let visitedCells = {}
 
     const visit = (cell, enableEdgeToGetHere) => {
@@ -122,7 +123,7 @@ maze.depthFirstPrune = (seedCell, rand, doStuff = () => {}) => {
             }
         }
 
-        _.shuffle(edges).forEach(edge => {
+        shuffle(edges).forEach(edge => {
             visit(edge.get(), () => edge.setEnabled(true))
         })
     }

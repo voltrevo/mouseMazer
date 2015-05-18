@@ -28,13 +28,13 @@ let startNewGame = (edges, pos, onUpdate) => {
     cheeseElement.style.top = cheeseCellPos.y - 16 + 'px'
     document.body.appendChild(cheeseElement)
 
-    window.mouse = new mouse(mouseCellPos.x, mouseCellPos.y)
-    document.body.appendChild(window.mouse.element)
+    let mazeMouse = new mouse(mouseCellPos.x, mouseCellPos.y)
+    document.body.appendChild(mazeMouse.element)
 
     onUpdate((update) => {
         let mouseCellPos = mazeDisplay.getPos(update.pos.row, update.pos.col)
 
-        window.mouse.move(mouseCellPos.x, mouseCellPos.y, 500).then(() => {
+        mazeMouse.move(mouseCellPos.x, mouseCellPos.y, 500).then(() => {
             console.log(update.stepCount + ' / ' + update.stepMax)
         })
     })
